@@ -17,81 +17,81 @@ UT EID 1: sph974
 
 
 def length_of_longest_substring_n3(s):
-      """
-      Finds the length of the longest substring without repeating characters
-      using a brute force approach (O(N^3)).
+    """
+    Finds the length of the longest substring without repeating characters
+    using a brute force approach (O(N^3)).
 
-      pre: s is a string of arbitrary length, possibly empty.
-      post: Returns an integer >= 0 representing the length of the longest substring
-            in s that contains no repeating characters.
-      """
-      string_length = 0
-      for i in range(len(s)):
-            for j in range(i + 1, len(s)):
-                  freq_list = [0] * 256
-                  substring = s[i:j + 1]
-                  for char in substring:
-                        freq_list[ord(char)] += 1
-                  count = 0
-                  for item in freq_list:
-                        if item > 1:
-                              count += 1
-                  if count == 0 and len(substring) > string_length:
-                        string_length = len(substring)
-      return string_length
-              
+    pre: s is a string of arbitrary length, possibly empty.
+    post: Returns an integer >= 0 representing the length of the longest substring
+        in s that contains no repeating characters.
+    """
+    string_length = 0
+    for i in range(len(s)):
+        for j in range(i + 1, len(s)):
+            freq_list = [0] * 256
+            substring = s[i:j + 1]
+            for char in substring:
+                freq_list[ord(char)] += 1
+            count = 0
+            for item in freq_list:
+                if item > 1:
+                    count += 1
+            if count == 0 and len(substring) > string_length:
+                string_length = len(substring)
+    return string_length
+
 
 
 def length_of_longest_substring_n2(s):
-      """
-      Finds the length of the longest substring without repeating characters
-      using a frequency list approach (O(N^2)), converting each character to
-      their corresponding numeric representation in ASCII as the index into the
-      frequency list.
+    """
+    Finds the length of the longest substring without repeating characters
+    using a frequency list approach (O(N^2)), converting each character to
+    their corresponding numeric representation in ASCII as the index into the
+    frequency list.
 
-      pre: s is a string of arbitrary length, possibly empty.
-      post: Returns an integer >= 0 representing the length of the longest substring
-            in s that contains no repeating characters.
-      """
-      string_length = 0
-      for i in range(len(s)):
-            freq_list = [0] * 256
-            for j in range(i, len(s)):
-                  freq_list[ord(s[j])] += 1
-                  count = 0
-                  for item in freq_list:
-                        if item > 1:
-                              count += 1
-                  if count == 0 and (j - i) + 1 > string_length:
-                        string_length = (j - i) + 1
-      return string_length
-              
-      
+    pre: s is a string of arbitrary length, possibly empty.
+    post: Returns an integer >= 0 representing the length of the longest substring
+        in s that contains no repeating characters.
+    """
+    string_length = 0
+    for i in range(len(s)):
+        freq_list = [0] * 256
+        for j in range(i, len(s)):
+            freq_list[ord(s[j])] += 1
+            count = 0
+            for item in freq_list:
+                if item > 1:
+                    count += 1
+            if count == 0 and (j - i) + 1 > string_length:
+                string_length = (j - i) + 1
+    return string_length
+
+
 
 def length_of_longest_substring_n(s):
-      """
-      Finds the length of the longest substring without repeating characters
-      using a frequency list approach (O(N)), converting each character to
-      their corresponding numeric representation in ASCII as the index into the
-      frequency list. However, this approach stops early, breaking out of the inner
-      loop when a repeating character is found. You may also choose to challenge
-      yourself by implementing a sliding window approach.
+    """
+    Finds the length of the longest substring without repeating characters
+    using a frequency list approach (O(N)), converting each character to
+    their corresponding numeric representation in ASCII as the index into the
+    frequency list. However, this approach stops early, breaking out of the inner
+    loop when a repeating character is found. You may also choose to challenge
+    yourself by implementing a sliding window approach.
 
-      pre: s is a string of arbitrary length, possibly empty.
-      post: Returns an integer >= 0 representing the length of the longest substring
-            in s that contains no repeating characters.
-      """
-      string_length = 0
-      for i in range(len(s)):
-            freq_list = [0] * 256
-            for j in range(i, len(s)):
-                  freq_list[ord(s[j])] += 1
-                  if freq_list[ord(s[j])] > 1:
-                        break
-                  count = 0
-                  for item in freq_list:
-                        if item > 1:
-                              count += 1
-                  if count == 0 and (j - i) + 1 > string_length:
-                        string_length = (j - i) + 1
-      return string_length
+    pre: s is a string of arbitrary length, possibly empty.
+    post: Returns an integer >= 0 representing the length of the longest substring
+        in s that contains no repeating characters.
+    """
+    string_length = 0
+    for i in range(len(s)):
+        freq_list = [0] * 256
+        for j in range(i, len(s)):
+            freq_list[ord(s[j])] += 1
+            if freq_list[ord(s[j])] > 1:
+                break
+            count = 0
+            for item in freq_list:
+                if item > 1:
+                    count += 1
+            if count == 0 and (j - i) + 1 > string_length:
+                string_length = (j - i) + 1
+    return string_length
